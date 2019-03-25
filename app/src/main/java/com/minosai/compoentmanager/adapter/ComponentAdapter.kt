@@ -11,7 +11,7 @@ import com.minosai.compoentmanager.util.show
 import kotlinx.android.synthetic.main.item_component.view.*
 
 class ComponentAdapter(
-    var components: List<ComponentRequestModel>, var listener: (ComponentRequestModel, Int) -> Unit
+    var components: List<ComponentRequestModel>, var listener: (ComponentRequestModel, Int, String) -> Unit
 ) : RecyclerView.Adapter<ComponentAdapter.ComponentViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -26,7 +26,7 @@ class ComponentAdapter(
     inner class ComponentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(
             componentRequestModel: ComponentRequestModel,
-            lintener: (ComponentRequestModel, Int) -> Unit,
+            listener: (ComponentRequestModel, Int, String) -> Unit,
             position: Int
         ) = with(itemView) {
 
@@ -34,14 +34,18 @@ class ComponentAdapter(
             text_component_count.text = "count - ${componentRequestModel.count}"
 
             if (componentRequestModel.status == ComponentRequestModel.ComponentRequestStatus.PENDING) {
-                image_approve.show()
+                button_accept.show()
             } else {
-                image_approve.gone()
+                button_accept.gone()
             }
 
-            image_approve.setOnClickListener {
+            button_accept.setOnClickListener {
                 componentRequestModel.status = ComponentRequestModel.ComponentRequestStatus.APPROVED
-                listener(componentRequestModel, position)
+                listener(componentRequestModel, position, "UPDATE")
+            }
+
+            button_reject.setOnClickListener {
+                listener(componentRequestModel, position, "DELETE")
             }
 
         }

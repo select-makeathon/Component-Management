@@ -12,27 +12,45 @@
             android:layout_height="wrap_content"
             android:id="@+id/text_component_name"
             android:layout_weight="1"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/image_approve" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.5"
+            android:textSize="18sp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/text_component_count"
-            app:layout_constraintVertical_chainStyle="spread" android:textSize="18sp"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintVertical_chainStyle="spread"/>
 
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/text_component_count"
-            tools:text="count - 5" android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="count - 5"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@+id/text_component_name"
-            app:layout_constraintStart_toStartOf="@+id/text_component_name" android:textColor="@color/colorAccent"
-            android:textSize="18sp"/>
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_done_black_24dp"
-            android:id="@+id/image_approve"
-            android:padding="16dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:background="@drawable/bg_muted_yellow_curve"
-            android:tint="@color/colorAccent" android:foreground="@drawable/bg_ripple"/>
+            app:layout_constraintBottom_toTopOf="@+id/button_reject" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+    <Button
+            android:text="reject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_reject"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_component_count"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/button_accept"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:background="@drawable/bg_muted_yellow_curve" android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"/>
+    <Button
+            android:text="approve"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_accept"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_reject"
+            app:layout_constraintStart_toEndOf="@+id/button_reject"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:background="@drawable/bg_muted_yellow_curve"
+            android:textColor="@color/colorAccent" android:layout_marginStart="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

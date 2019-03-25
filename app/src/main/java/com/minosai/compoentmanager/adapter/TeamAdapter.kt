@@ -29,8 +29,11 @@ class TeamAdapter(
             with(rv_components) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
-                adapter = ComponentAdapter(team.componentRequests) { componentRequestModel, position ->
-                    team.componentRequests[position] = componentRequestModel
+                adapter = ComponentAdapter(team.componentRequests) { componentRequestModel, position, action ->
+                    when(action) {
+                        "UPDATE" -> team.componentRequests[position] = componentRequestModel
+                        "DELETE" -> team.componentRequests.removeAt(position)
+                    }
                     listener(team)
                 }
             }
